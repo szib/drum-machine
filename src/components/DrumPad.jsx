@@ -28,7 +28,7 @@ class DrumPad extends Component {
   }
 
   handleKeyPress(e) {
-    if (this.props.keyCode === e.keyCode) {
+    if (this.props.drumPadData.keyCode === e.keyCode) {
       this.playSound();
     }
   }
@@ -42,6 +42,7 @@ class DrumPad extends Component {
 
   render() {
     const className = ['drum-pad', this.props.className].join(' ');
+    // console.log(this.props)
     return (
       <div className={className} id={this.props.id} onClick={this.playSound}>
         <audio className='clip' id={this.props.keyTrigger} src={this.props.url}></audio>
