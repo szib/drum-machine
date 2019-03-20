@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const DrumPad = props => {
   const className = ['drum-pad', props.className].join(' ')
+
   return (
     <div className={className} id={props.id}>
       <audio className='clip' id={props.keyTrigger} src={props.url}></audio>
@@ -13,12 +14,13 @@ const DrumPad = props => {
 }
 
 const StyledDrumPad = styled(DrumPad)`
-  background-color: red;
   font-size: 2em;
   padding: .5em;
-  margin: 0.1em;
-  border: 1px solid black;
   box-sizing: border-box;
+  border: 1px solid black;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+  border-radius: 2px;
+  text-align: center;
 `
 
 export default StyledDrumPad;
