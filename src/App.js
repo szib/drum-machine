@@ -15,7 +15,7 @@ class App extends Component {
 }
 
 const StyledApp = styled(App)`
-  background-color: olive;
+  background-color: #eee;
   
   width: 100vw;
   height: 100vh;

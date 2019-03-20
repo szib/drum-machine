@@ -11,9 +11,10 @@ const mapStateToProps = (state) => {
 
 class DrumMachine extends Component {
   render() {
+    const drumPads = this.props.banks[this.props.activeBank]
     return (
       <div className={this.props.className} id="drum-machine">
-        <PadBank></PadBank>
+        <PadBank drumPads={drumPads}></PadBank>
         <Controls></Controls>
       </div>
     );
@@ -21,7 +22,11 @@ class DrumMachine extends Component {
 }
 
 const StyledDrumMachine = styled(DrumMachine)`
-  background-color: #add;
+  padding: 30px;
+  background-color: #ccc;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  border: 1px solid black;
+  border-radius: 5px;
 `
 
 export default connect(mapStateToProps)(StyledDrumMachine);

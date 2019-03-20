@@ -7,7 +7,7 @@ import Display from './Display'
 const Controls = (props) => {
   //
   return (
-    <div>
+    <div className={props.className}>
       Controls
       <Display text="Display"></Display>
     </div>
