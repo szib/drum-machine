@@ -1,16 +1,28 @@
-import React from 'react';
-
+import React, { Component } from 'react';
 import styled from 'styled-components'
 
-const DrumPad = props => {
-  const className = ['drum-pad', props.className].join(' ')
+class DrumPad extends Component {
 
-  return (
-    <div className={className} id={props.id}>
-      <audio className='clip' id={props.keyTrigger} src={props.url}></audio>
-      {props.keyTrigger}
-    </div>
-  )
+  constructor(props) {
+    super(props);
+    this.playSound = this.playSound.bind(this)
+  }
+
+  playSound(e) {
+    const sound = document.getElementById(this.props.keyTrigger);
+    sound.currentTime = 0;
+    sound.play();
+  }
+
+  render() {
+    const className = ['drum-pad', this.props.className].join(' ');
+    return (
+      <div className={className} id={this.props.id} onClick={this.playSound}>
+        <audio className='clip' id={this.props.keyTrigger} src={this.props.url}></audio>
+        {this.props.keyTrigger}
+      </div>
+    );
+  }
 }
 
 const StyledDrumPad = styled(DrumPad)`
