@@ -5,6 +5,12 @@ import { connect } from 'react-redux'
 
 import { updateDisplay } from '../redux/actions'
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    drumPadData: state.banks[state.activeBank].find(drumpad => drumpad.id === ownProps.id)
+  }
+}
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     updateDisplay: () => dispatch(updateDisplay(ownProps.id))
@@ -34,7 +40,7 @@ class DrumPad extends Component {
   }
 
   playSound(e) {
-    const sound = document.getElementById(this.props.keyTrigger);
+    const sound = document.getElementById(this.props.drumPadData.keyTrigger);
     sound.currentTime = 0;
     sound.play();
     this.props.updateDisplay();
@@ -44,9 +50,9 @@ class DrumPad extends Component {
     const className = ['drum-pad', this.props.className].join(' ');
     // console.log(this.props)
     return (
-      <div className={className} id={this.props.id} onClick={this.playSound}>
-        <audio className='clip' id={this.props.keyTrigger} src={this.props.url}></audio>
-        {this.props.keyTrigger}
+      <div className={className} id={this.props.drumPadData.id} onClick={this.playSound}>
+        <audio className='clip' id={this.props.drumPadData.keyTrigger} src={this.props.drumPadData.url}></audio>
+        {this.props.drumPadData.keyTrigger}
       </div>
     );
   }
@@ -62,4 +68,4 @@ const StyledDrumPad = styled(DrumPad)`
   text-align: center;
 `
 
-export default connect(null, mapDispatchToProps)(StyledDrumPad);
+export default connect(mapStateToProps, mapDispatchToProps)(StyledDrumPad);
