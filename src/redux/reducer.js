@@ -4,13 +4,13 @@ import initialState from './initialState'
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actions.TOGGLE_BANK:
+    case actions.TOGGLE_POWER:
       return {
         ...state,
         isPowerOn: !state.isPowerOn
       };
 
-    case actions.TOGGLE_POWER:
+    case actions.TOGGLE_BANK:
       return {
         ...state,
         activeBank: ++state.activeBank % 2
