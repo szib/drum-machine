@@ -1,6 +1,7 @@
 export default {
   isPowerOn: false,
   activeBank: 0,
+  display: '',
   banks: [
     [
       {

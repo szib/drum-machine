@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 
+import { connect } from 'react-redux'
+
+import { updateDisplay } from '../redux/actions'
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    updateDisplay: () => dispatch(updateDisplay(ownProps.id))
+  }
+}
+
 class DrumPad extends Component {
 
   constructor(props) {
@@ -27,6 +37,7 @@ class DrumPad extends Component {
     const sound = document.getElementById(this.props.keyTrigger);
     sound.currentTime = 0;
     sound.play();
+    this.props.updateDisplay();
   }
 
   render() {
@@ -50,4 +61,4 @@ const StyledDrumPad = styled(DrumPad)`
   text-align: center;
 `
 
-export default StyledDrumPad;
+export default connect(null, mapDispatchToProps)(StyledDrumPad);

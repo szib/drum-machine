@@ -21,6 +21,12 @@ export default (state = initialState, action) => {
         ...state
       };
 
+    case actions.UPDATE_DISPLAY:
+      return {
+        ...state,
+        display: action.text
+      }
+
     default:
       return state;
   }
