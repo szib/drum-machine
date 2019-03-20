@@ -1,12 +1,19 @@
 import React from 'react';
-
 import styled from 'styled-components'
+
+import { connect } from 'react-redux'
 
 import DrumPad from './DrumPad'
 
+const mapStateToProps = state => {
+  return {
+    drumpads: state.banks[state.activeBank].map(drumpad => drumpad.id)
+  }
+}
+
 const PadBank = (props) => {
   const drumPads = props.drumPads.map(drumPad => (
-    <DrumPad key={drumPad.keyTrigger} {...drumPad} />
+    <DrumPad key={drumPad.id} id={drumPad.id} />
   ))
   return (
     <div id="padbank" className={props.className}>
@@ -24,4 +31,4 @@ const StyledPadBank = styled(PadBank)`
   grid-gap: 0.2em;
 `
 
-export default StyledPadBank;
+export default connect(mapStateToProps)(StyledPadBank);
