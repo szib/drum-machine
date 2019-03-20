@@ -16,11 +16,6 @@ export default (state = initialState, action) => {
         activeBank: ++state.activeBank % 2
       };
 
-    case actions.HIT_DRUMPAD:
-      return {
-        ...state
-      };
-
     case actions.UPDATE_DISPLAY:
       return {
         ...state,
