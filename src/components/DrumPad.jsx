@@ -7,7 +7,8 @@ import { updateDisplay } from '../redux/actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    drumPadData: state.banks[state.activeBank].find(drumpad => drumpad.id === ownProps.id)
+    drumPadData: state.banks[state.activeBank].find(drumpad => drumpad.id === ownProps.id),
+    isPowerOn: state.isPowerOn
   }
 }
 
@@ -40,15 +41,16 @@ class DrumPad extends Component {
   }
 
   playSound(e) {
-    const sound = document.getElementById(this.props.drumPadData.keyTrigger);
-    sound.currentTime = 0;
-    sound.play();
-    this.props.updateDisplay();
+    if (this.props.isPowerOn) {
+      const sound = document.getElementById(this.props.drumPadData.keyTrigger);
+      sound.currentTime = 0;
+      sound.play();
+      this.props.updateDisplay();
+    }
   }
 
   render() {
     const className = ['drum-pad', this.props.className].join(' ');
-    // console.log(this.props)
     return (
       <div className={className} id={this.props.drumPadData.id} onClick={this.playSound}>
         <audio className='clip' id={this.props.drumPadData.keyTrigger} src={this.props.drumPadData.url}></audio>

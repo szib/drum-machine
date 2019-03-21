@@ -7,13 +7,14 @@ export default (state = initialState, action) => {
     case actions.TOGGLE_POWER:
       return {
         ...state,
-        isPowerOn: !state.isPowerOn
+        isPowerOn: !state.isPowerOn,
+        display: ''
       };
 
     case actions.TOGGLE_BANK:
       return {
         ...state,
-        activeBank: ++state.activeBank % 2
+        activeBank: state.activeBank === 1 ? 0 : 1
       };
 
     case actions.UPDATE_DISPLAY:

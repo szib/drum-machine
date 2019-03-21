@@ -16,6 +16,7 @@ class App extends Component {
 
 const StyledApp = styled(App)`
   background-color: #eee;
+  font-family: 'Bungee', cursive;
   
   width: 100vw;
   height: 100vh;
