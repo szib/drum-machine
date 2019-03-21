@@ -7,7 +7,8 @@ export default (state = initialState, action) => {
     case actions.TOGGLE_POWER:
       return {
         ...state,
-        isPowerOn: !state.isPowerOn
+        isPowerOn: !state.isPowerOn,
+        display: ''
       };
 
     case actions.TOGGLE_BANK:
