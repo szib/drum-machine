@@ -1,15 +1,15 @@
 import React from 'react';
 
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
-const PowerButton = (props) => {
+const PowerButton = props => {
   return (
     <button className={props.className} onClick={props.onClickHandler}>
       POWER
-      <div className="led"></div>
+      <div className="led" />
     </button>
   );
-}
+};
 
 const StyledPowerButton = styled(PowerButton)`
   background: #444;
@@ -28,14 +28,16 @@ const StyledPowerButton = styled(PowerButton)`
     background: #a00;
   }
 
-  ${props => props.isPowerOn && css`
-    color: #ddd;
-    text-shadow: 0 0 2px rgba(255,255,255,0.5);
-    .led {
-      background: red;
-      box-shadow: 0px 0px 2px red;
-    }
-  `}
-`
+  ${props =>
+    props.isPowerOn &&
+    css`
+      color: #ddd;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+      .led {
+        background: red;
+        box-shadow: 0px 0px 2px red;
+      }
+    `}
+`;
 
 export default StyledPowerButton;

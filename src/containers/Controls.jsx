@@ -3,27 +3,26 @@ import styled from 'styled-components';
 
 import { connect } from 'react-redux';
 
-import Display from '../components/Display'
+import Display from '../components/Display';
 import PowerButton from '../components/PowerButton';
 import BankSelector from '../components/BankSelector';
 
-import { togglePower, toggleBank } from '../redux/actions'
+import { togglePower, toggleBank } from '../redux/actions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     display: state.display,
     isPowerOn: state.isPowerOn,
     activeBank: state.activeBank
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     togglePower: () => dispatch(togglePower()),
-    toggleBank: () => dispatch(toggleBank()),
-  }
-}
-
+    toggleBank: () => dispatch(toggleBank())
+  };
+};
 
 class Controls extends Component {
   constructor(props) {
@@ -55,8 +54,15 @@ class Controls extends Component {
   render() {
     return (
       <div className={this.props.className}>
-        <PowerButton isPowerOn={this.props.isPowerOn} onClickHandler={this.props.togglePower} />
-        <BankSelector isPowerOn={this.props.isPowerOn} bank={this.props.activeBank} onClickHandler={this.props.toggleBank} />
+        <PowerButton
+          isPowerOn={this.props.isPowerOn}
+          onClickHandler={this.props.togglePower}
+        />
+        <BankSelector
+          isPowerOn={this.props.isPowerOn}
+          bank={this.props.activeBank}
+          onClickHandler={this.props.toggleBank}
+        />
         <Display isPowerOn={this.props.isPowerOn} />
       </div>
     );
@@ -68,7 +74,10 @@ const StyledControls = styled(Controls)`
 
   background-color: #aaa;
 
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-`
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+`;
 
-export default connect(mapStateToProps, mapDispatchToProps)(StyledControls);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StyledControls);
