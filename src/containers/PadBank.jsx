@@ -3,17 +3,17 @@ import styled from 'styled-components'
 
 import { connect } from 'react-redux'
 
-import DrumPad from './DrumPad'
+import DrumPad from '../components/DrumPad'
 
 const mapStateToProps = state => {
   return {
-    drumpads: state.banks[state.activeBank].map(drumpad => drumpad.id)
+    drumPads: state.banks[state.activeBank].map(drumpad => drumpad.id)
   }
 }
 
 const PadBank = (props) => {
-  const drumPads = props.drumPads.map(drumPad => (
-    <DrumPad key={drumPad.id} id={drumPad.id} />
+  const drumPads = props.drumPads.map(drumPadId => (
+    <DrumPad key={drumPadId} id={drumPadId} />
   ))
   return (
     <div id="padbank" className={props.className}>

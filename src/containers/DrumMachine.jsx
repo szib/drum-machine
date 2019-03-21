@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
-import PadBank from '../components/PadBank'
-import Controls from '../components/Controls'
+import PadBank from '../containers/PadBank'
+import Controls from '../containers/Controls'
 
 const mapStateToProps = (state) => {
   return state
@@ -11,10 +11,9 @@ const mapStateToProps = (state) => {
 
 class DrumMachine extends Component {
   render() {
-    const drumPads = this.props.banks[this.props.activeBank]
     return (
       <div className={this.props.className} id="drum-machine">
-        <PadBank drumPads={drumPads}></PadBank>
+        <PadBank></PadBank>
         <Controls></Controls>
       </div>
     );
