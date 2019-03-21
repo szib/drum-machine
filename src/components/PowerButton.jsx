@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 
 const PowerButton = (props) => {
   return (
-    <button className={props.className} onClick={props.onClickHandler}>Power {props.isPowerOn ? 'ON' : 'OFF'}</button>
+    <button className={props.className} onClick={props.onClickHandler}>Power {props.isPowerOn ? 'ON' : 'OFF'} [ENTER]</button>
   );
 }
 

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const BankSelector = (props) => {
   return (
-    <button className={props.className} onClick={props.onClickHandler}>Bank {props.bank}</button>
+    <button className={props.className} onClick={props.onClickHandler}>Bank {props.bank} [SPACE]</button>
   );
 }
 

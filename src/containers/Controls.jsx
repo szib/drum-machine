@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { connect } from 'react-redux';
@@ -24,14 +24,43 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const Controls = (props) => {
-  return (
-    <div className={props.className}>
-      <PowerButton isPowerOn={props.isPowerOn} onClickHandler={props.togglePower} />
-      <BankSelector bank={props.activeBank} onClickHandler={props.toggleBank} />
-      <Display />
-    </div>
-  );
+
+class Controls extends Component {
+  constructor(props) {
+    super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress(e) {
+    switch (e.keyCode) {
+      case 32:
+        this.props.toggleBank();
+        break;
+      case 13:
+        this.props.togglePower();
+        break;
+      default:
+        break;
+    }
+  }
+
+  render() {
+    return (
+      <div className={this.props.className}>
+        <PowerButton isPowerOn={this.props.isPowerOn} onClickHandler={this.props.togglePower} />
+        <BankSelector bank={this.props.activeBank} onClickHandler={this.props.toggleBank} />
+        <Display />
+      </div>
+    );
+  }
 }
 
 const StyledControls = styled(Controls)`
