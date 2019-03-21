@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux'
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const mapStateToProps = (state) => {
   return { text: state.display }
@@ -13,15 +13,21 @@ const Display = (props) => (
 );
 
 const StyledDisplay = styled(Display)`
-  background-color: #ccc;
-  color: black;
+  background: #444;
+  color: #777;
 
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
   
-  text-align: center;
-  padding: 0.25em;
-  border: 1px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2em;
+
+  ${props => props.isPowerOn && css`
+    color: #ddd;
+    text-shadow: 0 0 2px rgba(255,255,255,0.5);
+  `}
 `
 
 export default connect(mapStateToProps)(StyledDisplay);

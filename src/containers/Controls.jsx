@@ -56,15 +56,19 @@ class Controls extends Component {
     return (
       <div className={this.props.className}>
         <PowerButton isPowerOn={this.props.isPowerOn} onClickHandler={this.props.togglePower} />
-        <BankSelector bank={this.props.activeBank} onClickHandler={this.props.toggleBank} />
-        <Display />
+        <BankSelector isPowerOn={this.props.isPowerOn} bank={this.props.activeBank} onClickHandler={this.props.toggleBank} />
+        <Display isPowerOn={this.props.isPowerOn} />
       </div>
     );
   }
 }
 
 const StyledControls = styled(Controls)`
-  background-color: #dda;
+  margin-top: 1em;
+
+  background-color: #aaa;
+
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
 `
 
 export default connect(mapStateToProps, mapDispatchToProps)(StyledControls);
