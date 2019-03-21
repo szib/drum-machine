@@ -1,5 +1,5 @@
 export default {
-  isPowerOn: false,
+  isPowerOn: true,
   activeBank: 0,
   display: '',
   banks: [
