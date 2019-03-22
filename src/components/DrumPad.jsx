@@ -23,8 +23,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 class DrumPad extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      active: false
+    };
     this.playSound = this.playSound.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.toogleActive = this.toogleActive.bind(this);
   }
 
   componentDidMount() {
@@ -47,7 +51,15 @@ class DrumPad extends Component {
       sound.currentTime = 0;
       sound.play();
       this.props.updateDisplay();
+      this.toogleActive();
+      setTimeout(() => this.toogleActive(), 150);
     }
+  }
+
+  toogleActive() {
+    this.setState({
+      active: !this.state.active
+    });
   }
 
   render() {
@@ -57,6 +69,15 @@ class DrumPad extends Component {
         className={className}
         id={this.props.drumPadData.id}
         onClick={this.playSound}
+        style={
+          this.state.active
+            ? {
+                borderColor: 'red',
+                color: 'red',
+                backgroundColor: 'white'
+              }
+            : {}
+        }
       >
         <audio
           className="clip"
